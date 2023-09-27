@@ -1,7 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { ReservationFormComponent } from './reservation-form/reservation-form.component';
+import { ReservationListComponent } from './reservation-list/reservation-list.component';
 
-const routes: Routes = [];
+/**
+ * When we visit the default localhost:4200 route we'll load
+ * the HomeComponent!
+ */
+const routes: Routes = [
+  {path: "", component: HomeComponent},
+  {path: "list", component: ReservationListComponent},
+  {path: "new", component: ReservationFormComponent}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
