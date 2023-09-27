@@ -24,7 +24,7 @@ export class ReservationFormComponent implements OnInit {
       checkOutDate: ['', Validators.required],
       guestName: ['', Validators.required],
       guestEmail: ['', [Validators.required, Validators.email]],
-      roomNumber: ['', Validators.required]
+      roomNumber: ['', [Validators.required, Validators.min(1)]]
     });
   }
 
