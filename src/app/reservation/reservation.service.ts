@@ -18,17 +18,18 @@ export class ReservationService {
   
   addReservation(reservation: Reservation): void {
     this.reservations.push(reservation);
-    console.log(this.reservations);
-    
+    localStorage.setItem('reservations', JSON.stringify(this.reservations));
   }
 
   deleteReservation(id: string): void {
     let targetIndex = this.reservations.findIndex(element => element.id === id);
     this.reservations.splice(targetIndex, 1);
+    localStorage.setItem('reservations', JSON.stringify(this.reservations));
   }
 
   updateReservation(updatedReservation: Reservation): void {
     let targetIndex = this.reservations.findIndex(element => element.id === updatedReservation.id);
     this.reservations[targetIndex] = updatedReservation;
+    localStorage.setItem('reservations', JSON.stringify(this.reservations));
   }
 }
