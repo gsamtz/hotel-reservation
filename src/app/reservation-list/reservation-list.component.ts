@@ -14,6 +14,7 @@ export class ReservationListComponent implements OnInit {
   constructor(private reservationService: ReservationService) {
   }
 
+  // Load existing reservations and render them appropriately
   ngOnInit(): void {
     this.reservations = this.reservationService.getAllReservations();
   }
