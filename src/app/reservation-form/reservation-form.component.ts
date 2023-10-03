@@ -13,7 +13,8 @@ export class ReservationFormComponent implements OnInit {
   reservationForm: FormGroup = new FormGroup({});
 
   // Inject a form builder into the reservation form component
-  constructor(private formBuilder: FormBuilder, 
+  constructor(
+      private formBuilder: FormBuilder, 
       private reservationService: ReservationService,
       private router: Router,
       private activatedRoute: ActivatedRoute) {
