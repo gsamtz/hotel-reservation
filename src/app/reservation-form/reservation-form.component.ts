@@ -36,25 +36,36 @@ export class ReservationFormComponent implements OnInit {
     let id = this.activatedRoute.snapshot.paramMap.get('id');
 
     if (id) {
-      let reservation = this.reservationService.getSingleReservation(id);
-      if (reservation) {
-        this.reservationForm.patchValue(reservation);
-      }
+      this.reservationService
+          .getSingleReservation(id)
+          .subscribe(reservation => {
+            if (reservation) {
+              this.reservationForm.patchValue(reservation);
+            }
+          });
     }
   }
 
   onSubmit() {
      if (this.reservationForm.valid) {
       let currentReservation = this.reservationForm.value;
-
       let id = this.activatedRoute.snapshot.paramMap.get('id');
 
       // Update the reservation or add an entirely new reservation
       if (id) {
         currentReservation.id = id;
-        this.reservationService.updateReservation(id, currentReservation);
+        this.reservationService
+          .updateReservation(id, currentReservation)
+          .subscribe(() => {
+            console.log('Update reservation request processed.');
+            
+          });
       } else {
-        this.reservationService.addReservation(currentReservation);
+        this.reservationService
+          .addReservation(currentReservation)
+          .subscribe(() => {
+            console.log('Reservation added.');
+          });
       }
       this.router.navigate(['/list']);
      }

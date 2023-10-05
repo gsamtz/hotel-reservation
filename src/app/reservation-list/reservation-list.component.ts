@@ -24,6 +24,10 @@ export class ReservationListComponent implements OnInit {
   deleteReservation(id: string): void {
     // ngOnInit may or may not assign reservations to the list; however, 
     // we're at least guaranteed to work with an empty list
-    this.reservationService.deleteReservation(id);
+    this.reservationService
+      .deleteReservation(id)
+      .subscribe(() => {
+        console.log('Delete request for ID: ' + id + ' processed.');
+      });
   }
 }
